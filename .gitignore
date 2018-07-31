@@ -1,0 +1,8 @@
+node_modules/
+.idea/
+dist/
+src/**/*.js
+src/**/*.j.smap
+test/**/*.js
+test/**/*.j.smap
+mochawesome-report/

@@ -1,0 +1,1 @@
+export const importHref = <T = any>(href: string): Promise<T> => import(href);
