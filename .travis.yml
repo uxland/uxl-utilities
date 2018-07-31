@@ -1,0 +1,17 @@
+language: javascript
+
+branches:
+  only: 
+    - master
+
+install: 
+  - npm install
+
+before_script: 
+  - npm run build
+
+script:
+  - npm test
+
+after_sucess:
+  - npm run release --version minor

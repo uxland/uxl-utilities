@@ -50,7 +50,9 @@
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
         "postinstall": "gulp dist",
         "preversion": "npm test",
-        "postversion": "git push && git push --tags"
+        "postversion": "git push && git push --tags",
+        "release": "npm version $version",
+        "postrelease": "npm publish"
     },
     "license": "Apache-2.0",
     "directories": {
