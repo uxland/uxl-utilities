@@ -4,23 +4,19 @@ branches:
   - master
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 install:
-  on:
-    branch: master
-      - npm install
+  if: branch = master
+    - npm install
 before_script:
-  on:
-    branch: master
-      - npm run build
+  if: branch = master
+    - npm run build
 script:
-on:
-    branch: master
-      - npm test
+  if: branch = master
+    - npm test
 after_success:
-  on:
-    branch: master
-      - git config credential.helper "store --file=.git/credentials"
-      - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-      - npm version patch
+  if: branch = master
+    - git config credential.helper "store --file=.git/credentials"
+    - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+    - npm version patch
 cache:
   directories:
   - node_modules
