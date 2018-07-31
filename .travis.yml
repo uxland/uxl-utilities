@@ -14,4 +14,9 @@ script:
   - npm test
 
 after_success:
-  - git status
+  - git fetch origin
+  - git checkout -b travis origin/travis
+  - git merge master
+  - git checkout master
+  - git merge --no-ff travis
+  - git push origin master

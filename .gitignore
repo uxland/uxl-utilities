@@ -6,3 +6,4 @@ src/**/*.j.smap
 test/**/*.js
 test/**/*.j.smap
 mochawesome-report/
+package-lock.json
