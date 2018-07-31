@@ -13,5 +13,5 @@ before_script:
 script:
   - npm test
 
-after_sucess:
+after_success:
   - npm run release --version minor
