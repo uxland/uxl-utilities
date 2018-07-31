@@ -13,6 +13,9 @@ after_success:
 cache:
   directories:
   - node_modules
+before_deploy:
+- git config --local user.email "dev@uxland.es"
+- git config --local user.name "uxland-developers"
 deploy:
   provider: npm
   email: dev@uxland.es
