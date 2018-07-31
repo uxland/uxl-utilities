@@ -14,4 +14,4 @@ script:
   - npm test
 
 after_success:
-  - npm run release --version minor
+  - npm version minor
