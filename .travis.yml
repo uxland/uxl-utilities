@@ -9,7 +9,7 @@ before_script:
 script:
 - npm test
 after_success:
-- npm version minor
+- npm version patch
 cache:
   directories:
   - node_modules
