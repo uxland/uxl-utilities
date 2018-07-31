@@ -49,7 +49,8 @@
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
         "postinstall": "gulp dist",
-        "postversion": "rimraf package-lock.json && git push && git push --tags",
+        "preversion": "rimraf package-lock.json",
+        "postversion": "git push && git push --tags",
         "release": "npm version",
         "postrelease": "npm publish"
     },
