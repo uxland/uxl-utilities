@@ -9,13 +9,12 @@ before_script:
 script:
 - npm test
 after_success:
+- git config --local user.email "dev@uxland.es"
+- git config --local user.name "uxland-developers"
 - npm version patch
 cache:
   directories:
   - node_modules
-before_deploy:
-- git config --local user.email "dev@uxland.es"
-- git config --local user.name "uxland-developers"
 deploy:
   provider: npm
   email: dev@uxland.es
