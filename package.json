@@ -50,7 +50,6 @@
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
         "postinstall": "gulp dist",
         "preversion": "rimraf package-lock.json",
-        "postversion": "git config user.email dev@uxland.es && git push origin HEAD:master && git push --tags",
         "release": "npm version",
         "postrelease": "npm publish"
     },

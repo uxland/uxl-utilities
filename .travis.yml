@@ -12,6 +12,7 @@ after_success:
 - git config --local user.email "dev@uxland.es"
 - git config --local user.name "uxland-developers"
 - npm version patch
+- git push && git push --tags
 cache:
   directories:
   - node_modules
