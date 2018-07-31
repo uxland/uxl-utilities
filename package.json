@@ -1,57 +1,57 @@
 {
-  "name": "uxl-utilities",
-  "version": "3.1.0",
-  "description": "Utilities",
-  "homepage": "https://bitbucket.org/newuibcn/uxl-utilities",
-  "repository": {
-    "type": "git",
-    "url": "git+https://bitbucket.org/newuibcn/uxl-redux.git"
-  },
-  "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "keywords": [
-    "polymer",
-    "web components"
-  ],
-  "devDependencies": {
-    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
-    "@types/chai": "^4.1.4",
-    "@types/lodash-es": "^4.17.0",
-    "@types/mocha": "^5.2.2",
-    "@types/polymer": "^1.2.4",
-    "@types/redux-mock-store": "^1.0.0",
-    "@types/sinon": "^5.0.1",
-    "@webcomponents/webcomponentsjs": "^2.0.0",
-    "chai": "^4.1.2",
-    "dts-generator": "^2.1.0",
-    "esm": "^3.0.66",
-    "gulp": "^3.9.1",
-    "gulp-run": "^1.7.1",
-    "lodash": "3.10.1",
-    "mocha": "^5.2.0",
-    "mochawesome": "^3.0.2",
-    "nsp": "^2.6.3",
-    "path": "^0.12.7",
-    "require-dir": "^0.3.2",
-    "rimraf": "^2.6.2",
-    "sinon": "^6.0.0",
-    "typescript": "^2.9.2",
-    "wct-browser-legacy": "^1.0.0"
-  },
-  "dependencies": {},
-  "scripts": {
-    "bump-bower": "gulp bump-bower && git add . && git commit -m 'Bump bower'",
-    "bump-version": "gulp bump-version",
-    "test": "echo 'TODO: define unit testing'",
-    "gulp": "gulp",
-    "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
-    "deps:install": "npm install",
-    "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
-    "postinstall": "gulp dist"
-  },
-  "license": "Apache-2.0",
-  "directories": {
-    "test": "test"
-  }
+    "name": "uxl-utilities",
+    "version": "1.0.0",
+    "description": "UXLand - Utilities",
+    "homepage": "https://github.com/uxland/uxl-utilities",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/uxland/uxl-utilities.git"
+    },
+    "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
+    "main": "dist/index.js",
+    "module": "dist/index.js",
+    "keywords": [
+        "polymer",
+        "web components"
+    ],
+    "devDependencies": {
+        "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+        "@types/chai": "^4.1.4",
+        "@types/lodash-es": "^4.17.0",
+        "@types/mocha": "^5.2.2",
+        "@types/polymer": "^1.2.4",
+        "@types/redux-mock-store": "^1.0.0",
+        "@types/sinon": "^5.0.1",
+        "@webcomponents/webcomponentsjs": "^2.0.0",
+        "chai": "^4.1.2",
+        "dts-generator": "^2.1.0",
+        "esm": "^3.0.66",
+        "gulp": "^3.9.1",
+        "gulp-run": "^1.7.1",
+        "lodash": "3.10.1",
+        "mocha": "^5.2.0",
+        "mochawesome": "^3.0.2",
+        "nsp": "^2.6.3",
+        "path": "^0.12.7",
+        "require-dir": "^0.3.2",
+        "rimraf": "^2.6.2",
+        "sinon": "^6.0.0",
+        "typescript": "^2.9.2",
+        "wct-browser-legacy": "^1.0.0"
+    },
+    "dependencies": {},
+    "scripts": {
+        "bump-bower": "gulp bump-bower && git add . && git commit -m 'Bump bower'",
+        "bump-version": "gulp bump-version",
+        "test": "echo 'TODO: define unit testing'",
+        "gulp": "gulp",
+        "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
+        "deps:install": "npm install",
+        "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
+        "postinstall": "gulp dist"
+    },
+    "license": "Apache-2.0",
+    "directories": {
+        "test": "test"
+    }
 }
