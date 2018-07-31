@@ -2,19 +2,19 @@ language: javascript
 branches:
   only:
   - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
-# install:
-#   - npm install
-# before_script:
-#   - npm run build
-# script:
-#   - npm test
+install:
+  - npm install
+before_script:
+  - npm run build
+script:
+  - npm test
 # after_success:
 #   - git config credential.helper "store --file=.git/credentials"
 #   - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
 #   - npm run release patch
-# cache:
-#   directories:
-#   - node_modules
+cache:
+  directories:
+  - node_modules
 deploy:
   provider: npm
   email: dev@uxland.es
