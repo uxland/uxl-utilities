@@ -51,6 +51,7 @@
         "postinstall": "gulp dist",
         "preversion": "rimraf package-lock.json",
         "postversion": "git checkout master && git push && git push --tags",
+        "prerelease": "npm test",
         "release": "npm version $semver"
     },
     "license": "Apache-2.0",
