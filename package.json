@@ -44,6 +44,7 @@
     },
     "dependencies": {},
     "scripts": {
+        "build": "tsc -p tsconfig.json",
         "test": "echo 'TODO: define unit testing'",
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
