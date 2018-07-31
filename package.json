@@ -51,7 +51,7 @@
         "postinstall": "gulp dist",
         "preversion": "npm test",
         "postversion": "git push && git push --tags",
-        "release": "npm version $version",
+        "release": "npm version",
         "postrelease": "npm publish"
     },
     "license": "Apache-2.0",
