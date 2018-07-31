@@ -2,16 +2,25 @@ language: javascript
 branches:
   only:
   - master
+  - /^v\d+\.\d+(\.\d+)?(-\S*)?$/
 install:
-- npm install
+  on:
+    branch: master
+      - npm install
 before_script:
-- npm run build
+  on:
+    branch: master
+      - npm run build
 script:
-- npm test
+on:
+    branch: master
+      - npm test
 after_success:
-- git config credential.helper "store --file=.git/credentials"
-- echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-- npm version patch
+  on:
+    branch: master
+      - git config credential.helper "store --file=.git/credentials"
+      - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
+      - npm version patch
 cache:
   directories:
   - node_modules
