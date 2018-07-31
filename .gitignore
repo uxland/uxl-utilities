@@ -4,6 +4,6 @@ dist/
 src/**/*.js
 src/**/*.j.smap
 test/**/*.js
-test/**/*.j.smap
+test/**/*.js.map
 mochawesome-report/
 package-lock.json
