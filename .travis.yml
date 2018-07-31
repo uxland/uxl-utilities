@@ -1,8 +1,5 @@
 language: javascript
 
-before_script:
-  - npm install
-  - npm run build
-
-script:
-  - npm test
+branches:
+  only: 
+    - master
