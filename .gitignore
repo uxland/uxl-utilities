@@ -2,7 +2,7 @@ node_modules/
 .idea/
 dist/
 src/**/*.js
-src/**/*.j.smap
+src/**/*.js.map
 test/**/*.js
 test/**/*.js.map
 mochawesome-report/
