@@ -12,8 +12,8 @@ script:
 after_success:
    - git config credential.helper "store --file=.git/credentials"
    - echo "https://${GH_TOKEN}:@github.com" > .git/credentials
-   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm version patch; fi
-   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then git push && git push --tags; fi
+   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then npm version prepatch; fi
+   - if [ "$TRAVIS_BRANCH" = "master" -a "$TRAVIS_PULL_REQUEST" = "false" ]; then git push origin HEAD:master && git push --tags; fi
 cache:
   directories:
   - node_modules
