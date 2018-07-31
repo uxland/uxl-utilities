@@ -49,9 +49,7 @@
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
         "postinstall": "gulp dist",
-        "preversion": "rimraf package-lock.json",
-        "prerelease": "npm test",
-        "release": "npm version $semver"
+        "preversion": "rimraf package-lock.json"
     },
     "license": "Apache-2.0",
     "directories": {
