@@ -6,7 +6,7 @@ notifications:
   email: false
 node_js: 10
 before_install:
-  - ls
+  - ls -l test
 after_success:
   - gulp dist
 branches:
