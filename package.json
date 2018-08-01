@@ -49,7 +49,7 @@
     "scripts": {
         "build": "tsc -p tsconfig.json",
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
-        "test": "echo 'test'",
+        "test": "node --experimental-modules node_modules/mocha/bin/_mocha -r esm --ui tdd --reporter mochawesome test/unit",
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test/unit",
         "prepare": "if [ -d dist ]; then ncp dist/. . && rimraf dist/; fi",
         "travis-deploy-once": "travis-deploy-once",
