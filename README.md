@@ -7,3 +7,7 @@
 ## Installation
 
 `npm i @uxland/uxl-utilities`
+
+## Usage
+
+`import {<utility_name>} from 'uxl-utilities'`
