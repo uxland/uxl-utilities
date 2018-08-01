@@ -10,6 +10,7 @@ after_success:
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
+    - /^v\d+\.\d+\.\d+\-d+$/
 deploy:
   provider: script
   skip_cleanup: true
