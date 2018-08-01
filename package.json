@@ -1,6 +1,6 @@
 {
     "name": "@uxland/uxl-utilities",
-    "version": "1.1.0",
+    "version": "0.0.0-development",
     "description": "UXLand - Utilities",
     "homepage": "https://github.com/uxland/uxl-utilities#readme",
     "repository": {
@@ -38,24 +38,52 @@
         "path": "^0.12.7",
         "require-dir": "^0.3.2",
         "rimraf": "^2.6.2",
+        "semantic-release": "^15.9.3",
         "sinon": "^6.0.0",
+        "travis-deploy-once": "^5.0.1",
         "typescript": "^2.9.2",
         "wct-browser-legacy": "^1.0.0"
     },
     "dependencies": {},
     "scripts": {
-        "build": "tsc -p tsconfig.json",
-        "test": "echo 'TODO: define unit testing'",
+        "test": "node --experimental-modules node_modules/mocha/bin/_mocha -r esm --ui tdd --reporter mochawesome test/unit",
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
-        "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test",
-        "postinstall": "gulp dist",
-        "preversion": "rimraf package-lock.json",
-        "postversion": "git checkout master && git push && git push --tags",
-        "prerelease": "npm test",
-        "release": "npm version $semver"
+        "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test/unit",
+        "prepare": "if [ -d dist ]; then ncp dist/. . && rimraf dist/; fi",
+        "travis-deploy-once": "travis-deploy-once",
+        "semantic-release": "semantic-release"
     },
     "license": "Apache-2.0",
     "directories": {
         "test": "test"
+    },
+    "publishConfig": {
+        "access": "public"
+    },
+    "release": {
+        "analyzeCommits": {
+            "preset": "angular",
+            "releaseRules": [
+                {
+                    "type": "prepatch",
+                    "release": "prepatch"
+                },
+                {
+                    "type": "preminor",
+                    "release": "preminor"
+                },
+                {
+                    "type": "premajor",
+                    "release": "premajor"
+                }
+            ],
+            "parserOpts": {
+                "noteKeywords": [
+                    "BREAKING CHANGE",
+                    "BREAKING CHANGES",
+                    "BREAKING"
+                ]
+            }
+        }
     }
 }
