@@ -6,4 +6,3 @@ src/**/*.js.map
 test/**/*.js
 test/**/*.js.map
 mochawesome-report/
-package-lock.json
