@@ -5,13 +5,13 @@ cache:
 notifications:
   email: false
 node_js: 10
+before_install:
+  - ls
 after_success:
   - gulp dist
-#   - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
-
 deploy:
   provider: script
   skip_cleanup: true
