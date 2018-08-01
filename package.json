@@ -61,31 +61,5 @@
     },
     "publishConfig": {
         "access": "public"
-    },
-    "release": {
-        "analyzeCommits": {
-            "preset": "angular",
-            "releaseRules": [
-                {
-                    "type": "prepatch",
-                    "release": "prepatch"
-                },
-                {
-                    "type": "preminor",
-                    "release": "preminor"
-                },
-                {
-                    "type": "premajor",
-                    "release": "premajor"
-                }
-            ],
-            "parserOpts": {
-                "noteKeywords": [
-                    "BREAKING CHANGE",
-                    "BREAKING CHANGES",
-                    "BREAKING"
-                ]
-            }
-        }
     }
 }
