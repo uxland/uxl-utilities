@@ -35,6 +35,7 @@
         "mocha": "^5.2.0",
         "mochawesome": "^3.0.2",
         "ncp": "^2.0.0",
+        "nodemon": "^1.18.3",
         "nsp": "^2.6.3",
         "path": "^0.12.7",
         "require-dir": "^0.3.2",
@@ -48,7 +49,9 @@
     "dependencies": {},
     "scripts": {
         "build": "tsc -p tsconfig.json",
-        "test": "npm run build && node --experimental-modules node_modules/mocha/bin/_mocha -r esm --ui tdd --reporter mochawesome test/unit",
+        "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
+        "test:ui": "polymer test --config-file wct.config.json",
+        "test:unit": "npm run build && node --experimental-modules node_modules/mocha/bin/_mocha -r esm --ui tdd --reporter mochawesome test/unit",
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test/unit",
         "prepare": "if [ -d dist ]; then ncp dist/. . && rimraf dist/; fi",
