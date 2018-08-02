@@ -9,4 +9,4 @@
 
 ## Usage
 
-`import {<utility_name>} from 'uxl-utilities'`
+`import {<utility_name>} from '@uxland/uxl-utilities'`
