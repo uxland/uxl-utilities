@@ -1,0 +1,1 @@
+export const collect = (what: any, wich: string) => (what ? {...what[wich], ...collect(Object.getPrototypeOf(what), wich)} :  {});
