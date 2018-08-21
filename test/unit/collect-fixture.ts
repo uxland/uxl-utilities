@@ -17,8 +17,8 @@ suite('When invoking collect method', () =>{
     });
     test('it should return all properties in prototype chain', () =>{
         class A {
-            static get props(){
-                return {
+            static get props(): any{
+                return <any>{
                     p1:{
 
                     },
@@ -27,7 +27,7 @@ suite('When invoking collect method', () =>{
             }
         }
         class B extends A{
-            static get props(){
+            static get props(): any{
                 return {
                     p3:{
 
