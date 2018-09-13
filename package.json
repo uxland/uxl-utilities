@@ -46,7 +46,7 @@
         "semantic-release": "^15.9.3",
         "sinon": "^6.0.0",
         "travis-deploy-once": "^5.0.1",
-        "typescript": "^2.9.2",
+        "typescript": "^3.0.3",
         "wct-browser-legacy": "^1.0.0"
     },
     "dependencies": {},
@@ -54,9 +54,9 @@
         "build": "tsc -p tsconfig.json",
         "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
         "test:ui": "polymer test --config-file wct.config.json",
-        "test:unit": "npm run build && node --experimental-modules node_modules/mocha/bin/_mocha -r esm ./test/unit/setup.js --ui tdd --reporter mochawesome test/unit",
+        "test:unit": "npm run build && node --experimental-modules node_modules/mocha/bin/_mocha -r esm ./test/unit/setup.js --ui tdd --reporter mochawesome test/unit --recursive",
         "dist": "tsc --p gulp/tsconfig-dist.json && gulp generate-d-ts",
-        "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm --ui tdd --reporter mochawesome test/unit",
+        "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm ./test/unit/setup.js --ui tdd --reporter mochawesome test/unit --recursive",
         "prepublishOnly": "if [ -d dist ]; then ncp dist/. . && rimraf dist/; fi",
         "travis-deploy-once": "travis-deploy-once",
         "semantic-release": "semantic-release"

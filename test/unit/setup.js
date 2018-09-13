@@ -31,5 +31,4 @@ window.requestAnimationFrame = raf;
 global.requestAnimationFrame = raf;
 const ce = require('@webcomponents/custom-elements/custom-elements.min.js');
 global.customElements = window.customElements;
-//const wc = require('@webcomponents/webcomponentsjs/bundles/webcomponents-sd-ce-pf.js');
 global.JSCompiler_renameProperty = a => a;

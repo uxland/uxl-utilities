@@ -4,7 +4,8 @@ export const propertiesObserver = dedupingMixin(parent =>{
    class mixin extends PropertiesMixin(parent){
        constructor() {
            super();
-           this.ready();
+           if(!this.tagName)
+               this.ready();
        }
        _shouldPropertiesChange(currentProps: any, changedProps: any, oldProps: any){
            Object.keys(changedProps || {}).filter(k => this[`${k}Changed`]).forEach(k => this[`${k}Changed`](changedProps[k], oldProps ? oldProps[k] : undefined));

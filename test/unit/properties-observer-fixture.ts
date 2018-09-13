@@ -35,7 +35,7 @@ suite('Given an instance of PropertiesObserver mixin', () =>{
         assert.isTrue(p2Spy.calledOnceWith('bye',undefined));
         assert.isFalse(p1Spy.called);
 
-    })
+    });
     test('should pass old value a second arg', () =>{
         let a = new A();
         let p1Spy = sinon.spy(a, 'p1Changed');
@@ -44,5 +44,5 @@ suite('Given an instance of PropertiesObserver mixin', () =>{
         a._shouldPropertiesChange(a, {p1:'hello', p2: 'bye'}, {p1: 'old hello', p2: 'old bye'});
         assert.isTrue(p1Spy.calledOnceWith('hello', 'old hello'));
         assert.isTrue(p2Spy.calledOnceWith('bye', 'old bye'));
-    })
-})
+    });
+});
