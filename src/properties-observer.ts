@@ -12,7 +12,7 @@ export const propertiesObserver = dedupingMixin(parent =>{
                    this[`${name}Changed`](current, oldValue);
            }
        }
-       requestUpdate(properties: {name:string, old: any}[]){
+       requestUpdate(properties: {name:string, old: any}[] = []){
            if(super.requestUpdate)
                return super.requestUpdate();
            properties.forEach(p => this._requestPropertyUpdate(p.name, p.old));
