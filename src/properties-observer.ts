@@ -1,16 +1,17 @@
 import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin";
-import {PropertiesMixin, PropertiesMixinConstructor} from "@polymer/polymer/lib/mixins/properties-mixin";
+import {notEqual, PropertyDeclaration} from "@polymer/lit-element";
+
 export const propertiesObserver = dedupingMixin(parent =>{
-   class mixin extends PropertiesMixin(parent){
-       constructor() {
-           super();
-           if(!this.tagName)
-               this.ready();
-       }
-       _shouldPropertiesChange(currentProps: any, changedProps: any, oldProps: any){
-           Object.keys(changedProps || {}).filter(k => this[`${k}Changed`]).forEach(k => this[`${k}Changed`](changedProps[k], oldProps ? oldProps[k] : undefined));
-           return true;
+   class mixin extends parent{
+
+       _requestPropertyUpdate(name: string, oldValue : any, options: PropertyDeclaration){
+           if(this[`${name}Changed`]){
+               let current = this[name];
+               let comparer = (options ? options.hasChanged : notEqual) || notEqual;
+               if(comparer(current, oldValue))
+                   this[`${name}Changed`](current, oldValue);
+           }
        }
    }
-   return (<any>mixin) as PropertiesMixinConstructor;
+   return (<any>mixin);
 });

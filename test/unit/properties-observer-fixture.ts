@@ -2,47 +2,43 @@ import {assert} from 'chai';
 import {propertiesObserver} from "../../src/properties-observer";
 import * as sinon from 'sinon';
 class A extends propertiesObserver(Object){
-    p1Changed(newValue: string, oldValue: string){
+    p1: string;
+    p2: string;
+    p1Changed(){
 
     }
-    p2Changed(newValue: string, oldValue: string){
+    p2Changed(){
 
     }
 }
-let a = new A();
-let p1Spy = sinon.spy(a, 'p1Changed');
-let p2Spy = sinon.spy(a, 'p2Changed');
+
 suite('Given an instance of PropertiesObserver mixin', () =>{
     test('it should invoke all xxxChanged when changes', () =>{
         let a = new A();
+        a.p1 = 'hello';
         let p1Spy = sinon.spy(a, 'p1Changed');
-        let p2Spy = sinon.spy(a, 'p2Changed');
 
-        a._shouldPropertiesChange(a, {p1:'hello', p2: 'bye'}, null);
+        a._requestPropertyUpdate('p1', undefined);
         assert.isTrue(p1Spy.calledOnceWith('hello',undefined));
-        assert.isTrue(p2Spy.calledOnceWith('bye',undefined));
     });
     test('should invoke only changed properties callbacks', () =>{
         let a = new A();
+        a.p1 = 'hello';
+        a.p2 = 'bye';
+
         let p1Spy = sinon.spy(a, 'p1Changed');
         let p2Spy = sinon.spy(a, 'p2Changed');
-        a._shouldPropertiesChange(a, {p1:'hello'}, null);
-        assert.isTrue(p1Spy.calledOnceWith('hello',undefined));
+        //a._shouldPropertiesChange(a, {p1:'hello'}, null);
+        a._requestPropertyUpdate('p1', 'old hello');
+        a._requestPropertyUpdate('p2', 'bye');
+        assert.isTrue(p1Spy.calledOnceWith('hello', 'old hello'));
         assert.isFalse(p2Spy.called);
         p1Spy.resetHistory();
         p2Spy.resetHistory();
-        a._shouldPropertiesChange(a, {p2:'bye'}, null);
-        assert.isTrue(p2Spy.calledOnceWith('bye',undefined));
+        a._requestPropertyUpdate('p1', 'hello');
+        a._requestPropertyUpdate('p2', 'old bye');
+        assert.isTrue(p2Spy.calledOnceWith('bye', 'old bye'));
         assert.isFalse(p1Spy.called);
 
-    });
-    test('should pass old value a second arg', () =>{
-        let a = new A();
-        let p1Spy = sinon.spy(a, 'p1Changed');
-        let p2Spy = sinon.spy(a, 'p2Changed');
-
-        a._shouldPropertiesChange(a, {p1:'hello', p2: 'bye'}, {p1: 'old hello', p2: 'old bye'});
-        assert.isTrue(p1Spy.calledOnceWith('hello', 'old hello'));
-        assert.isTrue(p2Spy.calledOnceWith('bye', 'old bye'));
     });
 });
