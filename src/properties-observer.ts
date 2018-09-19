@@ -11,6 +11,8 @@ export const propertiesObserver = dedupingMixin(parent =>{
                if(comparer(current, oldValue))
                    this[`${name}Changed`](current, oldValue);
            }
+           if(super._requestPropertyUpdate)
+               super._requestPropertyUpdate(name, oldValue, options);
        }
        requestUpdate(properties: {name:string, old: any}[] = []){
            if(super.requestUpdate)
