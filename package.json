@@ -50,7 +50,8 @@
         "wct-browser-legacy": "^1.0.0"
     },
     "dependencies": {
-
+        "@polymer/polymer": "^3.1.0",
+        "lit-element": "^2.0.0-rc.3"
     },
     "scripts": {
         "build": "tsc -p tsconfig.json",
