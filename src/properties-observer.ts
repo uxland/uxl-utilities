@@ -16,9 +16,9 @@ export const propertiesObserver = dedupingMixin(parent =>{
                 super._requestPropertyUpdate(name, oldValue, options);
         }
         requestUpdate(name: string, oldValue: any){
-            if(super.requestUpdate)
-                return super.requestUpdate(name, oldValue);
+            let result = super.requestUpdate ? super.requestUpdate(name, oldValue) : undefined;
             this._requestPropertyUpdate(name, oldValue);
+            return result;
         }
     }
     return (<any>mixin);
