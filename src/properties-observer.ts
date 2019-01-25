@@ -15,10 +15,10 @@ export const propertiesObserver = dedupingMixin(parent =>{
             if(super._requestPropertyUpdate)
                 super._requestPropertyUpdate(name, oldValue, options);
         }
-        requestUpdate(properties: {name:string, old: any}[] = []){
+        requestUpdate(name: string, oldValue: any){
             if(super.requestUpdate)
-                return super.requestUpdate();
-            properties.forEach(p => this._requestPropertyUpdate(p.name, p.old));
+                return super.requestUpdate(name, oldValue);
+            this._requestPropertyUpdate(name, oldValue);
         }
     }
     return (<any>mixin);
