@@ -13,7 +13,7 @@ export const propertiesObserver = dedupingMixin(parent =>{
                     this[`${name}Changed`](current, oldValue);
             }
             if(super._requestPropertyUpdate)
-                super._requestPropertyUpdate(name, oldValue, options);
+                super._requestPropertyUpdate(name, oldValue, options || {});
         }
         requestUpdate(name: string, oldValue: any){
             let result = super.requestUpdate ? super.requestUpdate(name, oldValue) : undefined;
