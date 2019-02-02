@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2018",
+    "module": "esnext",
+    "target": "es6",
+    "allowJs": true,
     "rootDir": ".",
     "sourceMap": true,
     "declaration": true,

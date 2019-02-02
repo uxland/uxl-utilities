@@ -3,7 +3,7 @@
     "module": "esnext",
     "target": "esnext",
     "rootDir": "./src",
-    "outDir": "./es",
+    "outDir": "./",
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": false,

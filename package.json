@@ -12,8 +12,8 @@
     },
     "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
     "main": "dist/index.js",
-    "module": "es/index.js",
-    "types": "es/index.d.ts",
+    "module": "index.js",
+    "types": "index.d.ts",
     "keywords": [
         "polymer",
         "web components"
