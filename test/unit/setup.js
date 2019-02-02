@@ -32,3 +32,5 @@ global.requestAnimationFrame = raf;
 const ce = require('@webcomponents/custom-elements/custom-elements.min.js');
 global.customElements = window.customElements;
 global.JSCompiler_renameProperty = a => a;
+let tsNode = require('ts-node');
+tsNode.register({all: true});

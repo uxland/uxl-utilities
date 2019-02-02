@@ -1,6 +1,7 @@
-import {spec, Predicate} from '../../src/spec';
+import {spec} from '../../src';
 import * as sinon from 'sinon';
 import {assert} from 'chai';
+import {Predicate} from "../../src/types";
 
 suite('spec fixture', () =>{
 
@@ -20,14 +21,14 @@ suite('spec fixture', () =>{
            array.push(i);
 
        const predicate: Predicate = (t: any) => t % 2 === 0;
-       let mySpec = spec(predicate)
+       let mySpec = spec(predicate);
        let filtered = array.filter(mySpec);
        const expected = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18  , 20];
        assert.deepEqual(filtered, expected);
    });
    test('not test', () =>{
       let item1 = {myProperty: 1};
-      const sp = spec(x => true);
+      const sp = spec(() => true);
       assert.exists(sp.not);
       const notSp: any = sp.not();
       assert.isTrue(sp(item1));
@@ -99,7 +100,7 @@ suite('spec fixture', () =>{
        const item3: MyInterface = {p1: 50, p2: 40};
        const spec1 = spec<MyInterface>(i => i.p1 >= 20);
        const spec2 = spec1.not();
-       const spec3 = spec<MyInterface>(i => i.p2 > 30);
+       //const spec3 = spec<MyInterface>(i => i.p2 > 30);
        const spec4 = spec1.not();
        const spec5 = spec2.and(spec4);
        assert.isTrue(spec5(item1));

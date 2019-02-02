@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "es2018",
-    "rootDir": ".",
+    "target": "esnext",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": false,
@@ -25,11 +26,11 @@
     }
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "es"
+    "es",
+    "test"
   ]
 }
