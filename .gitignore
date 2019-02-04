@@ -9,4 +9,3 @@ test/**/*.js.map
 !test/unit/setup.js
 !test/unit/tests.loader.js
 mochawesome-report/
-package-lock.json
