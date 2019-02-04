@@ -1,3 +1,5 @@
+let tsNode = require('ts-node');
+tsNode.register({all: true});
 const { JSDOM } = require('jsdom');
 
 const jsdom = new JSDOM('<!doctype html><head><script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script></head><html><body></body></html>', {
@@ -14,7 +16,7 @@ function copyProps(src, target) {
         }), {});
     Object.defineProperties(target, props);
 }
-window.customElements = {define: name => {}, whenDefined: name => Promise.resolve()};
+window.customElements = {define: name => {}, whenDefined: () => Promise.resolve()};
 
 global.window = window;
 global.document = window.document;
@@ -29,6 +31,8 @@ global.MutationObserver = mo;
 const raf = require('raf');
 window.requestAnimationFrame = raf;
 global.requestAnimationFrame = raf;
-const ce = require('@webcomponents/custom-elements/custom-elements.min.js');
+require('@webcomponents/custom-elements/custom-elements.min.js');
 global.customElements = window.customElements;
 global.JSCompiler_renameProperty = a => a;
+//const esm = require('esm');
+//esm(module, {cjs: true, esm: 'ts'});

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es6",
-    "allowJs": true,
-    "rootDir": ".",
+    "module": "commonjs",
+    "target": "esnext",
+    "rootDir": "./src",
+    "outDir": "./dist",
     "sourceMap": true,
     "declaration": true,
     "noImplicitAny": false,
@@ -26,11 +26,11 @@
     }
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "es"
+    "es",
+    "test"
   ]
 }
