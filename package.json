@@ -59,7 +59,6 @@
         "test:unit": "node --experimental-modules node_modules/mocha/bin/_mocha -r esm ./test/unit/setup.js --ui tdd --reporter mochawesome test/unit/**/*.loader.js",
         "dist": "npm run build",
         "tdd": "node --experimental-modules node_modules/mocha/bin/_mocha --watch -r esm ./test/unit/setup.js --ui tdd --reporter mochawesome test/unit/**/*.loader.js",
-        "prepublishOnly": "if [ -d dist ]; then ncp dist/. . && rimraf dist/; fi",
         "travis-deploy-once": "travis-deploy-once",
         "semantic-release": "semantic-release"
     },
