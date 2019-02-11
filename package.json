@@ -53,7 +53,7 @@
     "scripts": {
         "build:es": "tsc -p tsconfig-es.json",
         "build:cjs": "tsc -p tsconfig-cjs.json",
-        "build": "npm run build:es && npm run build:cjs",
+        "build": "npm run build:es",
         "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
         "test:ui": "polymer test --config-file wct.config.json",
         "test:unit": "node --experimental-modules node_modules/mocha/bin/_mocha -r esm ./test/unit/setup.js --ui tdd --reporter mochawesome test/unit/**/*.loader.js",
