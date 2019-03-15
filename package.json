@@ -19,7 +19,6 @@
         "web components"
     ],
     "devDependencies": {
-        "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
         "@types/chai": "^4.1.4",
         "@types/mocha": "^5.2.2",
         "@types/ramda": "^0.26.3",
