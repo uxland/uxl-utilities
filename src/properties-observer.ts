@@ -1,6 +1,6 @@
-import { dedupingMixin } from "@polymer/polymer/lib/utils/mixin";
 import {Constructor, LitElement, notEqual, PropertyDeclaration} from "lit-element";
 import {PropertiesObserverMixinFunction} from "./types";
+import {dedupingMixin} from "./deduping-mixin";
 
 export const propertiesObserver: PropertiesObserverMixinFunction = dedupingMixin((superClass: Constructor<LitElement>) => {
     class PropertiesObserverMixin extends superClass{

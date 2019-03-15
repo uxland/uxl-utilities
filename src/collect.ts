@@ -1,1 +1,1 @@
-export const collect = (what: any, wich: string) => (what ? {...what[wich], ...collect(Object.getPrototypeOf(what), wich)} :  {});
+export const collect = (what: any, which: string) => (what ? {...what[which], ...collect(Object.getPrototypeOf(what), which)} :  {});
