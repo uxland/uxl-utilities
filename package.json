@@ -37,7 +37,6 @@
         "typescript": "^3.3.3333"
     },
     "dependencies": {
-        "@babel/polyfill": "^7.2.5",
         "lit-element": "^2.0.1",
         "ramda": "^0.26.1"
     },
