@@ -1,23 +1,22 @@
 import {spec} from '../../src/spec';
-import * as sinon from 'sinon';
-import {assert} from 'chai';
 interface Item{
-    p1: number;
+    p1: number,
     p2: number;
 }
-suite('spec fixture', () =>{
+describe('spec fixture', () =>{
 
-   test('spec test', () =>{
-       let stub = sinon.stub().onFirstCall().returns(true).onSecondCall().returns(false);
+   it('spec test', () =>{
+
+       let stub = jest.fn().mockReturnValueOnce(true).mockReturnValueOnce(false);
        let mySpec = spec(stub);
        let result = mySpec(2);
-       assert.isTrue(result);
-       assert.isTrue(stub.calledOnce);
+       expect(result).toBe(true);
+       expect(stub).toHaveBeenCalledTimes(1)
        result = mySpec(3);
-       assert.isFalse(result);
-       assert.isTrue(stub.calledTwice);
+       expect(result).toBe(false);
+       expect(stub).toHaveBeenCalledTimes(2);
    });
-   test('filter test', () =>{
+    it('filter test', () =>{
        const array = [];
        for (let i = 0; i <= 20; i ++)
            array.push(i);
@@ -26,61 +25,61 @@ suite('spec fixture', () =>{
        let mySpec = spec(predicate)
        let filtered = array.filter(mySpec);
        const expected = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18  , 20];
-       assert.deepEqual(filtered, expected);
+       expect(filtered).toEqual(expected);
    });
-   test('not test', () =>{
+    it('not test', () =>{
       let item1 = {myProperty: 1};
       const sp = spec<Item>(x => true);
-      assert.exists(sp.not);
+      expect(sp.not).toBeDefined();
       const notSp = sp.not();
-      assert.isTrue(sp(item1));
-      assert.isFalse(notSp(item1));
+      expect(sp(item1)).toBe(true);
+      expect(notSp(item1)).toBe(false);
    });
-   test('or test', () =>{
+    it('or test', () =>{
        let item1 = {p1: 10, p2: 15};
        let item2 = {p1: 11, p2: 17};
        let item3 = {p1: 5, p2: 34};
        const sp1 = spec<Item>(x => x.p1 === 10);
        const sp2 = spec<Item>(x => x.p2 === 17);
        const orSpec = sp1.or(sp2);
-       assert.exists(sp1.or);
-       assert.isTrue(orSpec(item1));
-       assert.isTrue(orSpec(item2));
-       assert.isFalse(orSpec(item3));
+        expect(sp1.or).toBeDefined();
+       expect(orSpec(item1)).toBe(true);
+       expect(orSpec(item2)).toBe(true);
+       expect(orSpec(item3)).toBe(false);
    });
-   test('or test is commutative', () =>{
+    it('or test is commutative', () =>{
        let item1 = {p1: 10, p2: 15};
        let item2 = {p1: 11, p2: 17};
        let item3 = {p1: 5, p2: 34};
        const sp1 = spec<Item>(x => x.p1 === 10);
        const sp2 = spec<Item>(x => x.p2 === 17);
        let orSpec = sp1.or(sp2);
-       assert.isTrue(orSpec(item1));
-       assert.isTrue(orSpec(item2));
-       assert.isFalse(orSpec(item3));
+        expect(orSpec(item1)).toBe(true);
+        expect(orSpec(item2)).toBe(true);
+        expect(orSpec(item3)).toBe(false);
        orSpec =sp2.or(sp1);
-       assert.isTrue(orSpec(item1));
-       assert.isTrue(orSpec(item2));
-       assert.isFalse(orSpec(item3));
+        expect(orSpec(item1)).toBe(true);
+        expect(orSpec(item2)).toBe(true);
+        expect(orSpec(item3)).toBe(false);
    });
-   test('and test', () =>{
+    it('and test', () =>{
        let item1 = {p1: 10, p2: 15};
        let item2 = {p1: 11, p2: 17};
        let item3 = {p1: 5, p2: 34};
        const sp1 = spec(x => x.p1 === 10);
-       assert.exists(sp1.and);
+       expect(sp1).toBeDefined();
        const sp2 = spec(x => x.p2 === 15);
        let andSpec = sp1.and(sp2);
-       assert.isTrue(andSpec(item1));
-       assert.isFalse(andSpec(item2));
-       assert.isFalse(andSpec(item3));
+       expect(andSpec(item1)).toBe(true);
+       expect(andSpec(item2)).toBe(false);
+       expect(andSpec(item3));
        //commutative
        andSpec = sp2.or(sp1);
-       assert.isTrue(andSpec(item1));
-       assert.isFalse(andSpec(item2));
-       assert.isFalse(andSpec(item3));
+       expect(andSpec(item1)).toBe(true);
+        expect(andSpec(item2)).toBe(false);
+        expect(andSpec(item3)).toBe(false);
    });
-   test('miscellaneous', () =>{
+    it('miscellaneous', () =>{
 
       const item1 = {p1: 10, p2: 20};
        const item2 = {p1: 20, p2: 30};
@@ -90,9 +89,9 @@ suite('spec fixture', () =>{
        const spec3 = spec(i => i.p2 > 30);
        const spec4 = spec1.not();
        const spec5 = spec2.and(spec4);
-       assert.isTrue(spec5(item1));
-       assert.isFalse(spec5(item2));
-       assert.isFalse(spec5(item3));
+       expect(spec5(item1)).toBe(true);
+       expect(spec5(item2)).toBe(false);
+       expect(spec5(item3)).toBe(false);
    });
 
 });

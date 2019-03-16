@@ -4,3 +4,4 @@ export const invariant = (condition: any | ConditionFactory, message?: string) =
    if(!condition)
        throw new Error(message);
 };
+export default invariant;

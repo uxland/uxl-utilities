@@ -1,4 +1,3 @@
-import isEmpty from 'ramda/es/isEmpty';
-import complement from 'ramda/es/complement';
+import {isEmpty, complement} from 'ramda';
 export const isNotEmpty = complement(isEmpty);
 export default isNotEmpty;

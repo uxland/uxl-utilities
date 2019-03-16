@@ -1,13 +1,10 @@
 {
   "compilerOptions": {
-    "module": "esnext",
-    "target": "es6",
-    "rootDir": ".",
-    "sourceMap": true,
-    "declaration": true,
+    "target": "esnext",
+    "rootDir": "./src",
+    "allowSyntheticDefaultImports": true,
     "noImplicitAny": false,
     "removeComments": true,
-    "esModuleInterop": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "moduleResolution": "node",
@@ -24,12 +21,9 @@
       ]
     }
   },
-  "include": [
-    "src/**/*",
-    "test/**/*"
-  ],
   "exclude": [
     "node_modules",
-    "es"
+    "es",
+    "test"
   ]
 }

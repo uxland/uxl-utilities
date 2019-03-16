@@ -1,4 +1,3 @@
-import isNil from 'ramda/es/isNil';
-import complement from 'ramda/es/complement';
+import {isNil,complement} from 'ramda';
 export const isNotNil = complement(isNil);
 export default isNotNil;

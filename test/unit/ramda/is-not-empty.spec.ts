@@ -1,38 +1,37 @@
-import {assert} from 'chai';
 import isNotEmpty from "../../../src/ramda/is-not-empty";
-suite('is not empty fixture', () =>{
-    test('null should return true', () =>{
-        assert.isTrue(isNotEmpty(null));
+describe('is not empty fixture', () =>{
+    it('null should return true', () =>{
+        expect(isNotEmpty(null)).toBe(true);
     });
     test('undefined should return true', () =>{
-        assert.isTrue(isNotEmpty(undefined));
+        expect(isNotEmpty(undefined)).toBe(true);
     });
     test('empty string should return false', () =>{
-        assert.isFalse(isNotEmpty(''))
+       expect(isNotEmpty('')).toBe(false)
     });
     test('non empty string should return true', () =>{
-        assert.isTrue(isNotEmpty('hello'));
+        expect(isNotEmpty('hello')).toBe(true);
     });
     test('number should return true', () =>{
-        assert.isTrue(isNotEmpty(3));
+        expect(isNotEmpty(3)).toBe(true);
     });
     test('0 should return true', () =>{
-        assert.isTrue(isNotEmpty(0));
+        expect(isNotEmpty(0)).toBe(true);
     });
     test('empty array should return false', () =>{
-        assert.isFalse(isNotEmpty([]));
+        expect(isNotEmpty([])).toBe(false);
     });
     test('array should return true', () =>{
-        assert.isTrue(isNotEmpty([1, 2, 3]));
+        expect(isNotEmpty([1, 2, 3])).toBe(true);
     });
     test('empty object should return false', () =>{
-        assert.isFalse(isNotEmpty({}));
+        expect(isNotEmpty({})).toBe(false);
     });
     test('object should return true', () =>{
-        assert.isTrue(isNotEmpty({hello: 0}));
+        expect(isNotEmpty({hello: 0})).toBe(true);
     });
     test('NaN should return true', () =>{
-        assert.isTrue(isNotEmpty(NaN));
+        expect(isNotEmpty(NaN)).toBe(true);
     });
 
 });

@@ -1,12 +1,16 @@
-import {Constructor, LitElement, notEqual, PropertyDeclaration} from "lit-element";
+import {Constructor, PropertyDeclaration} from "lit-element";
 import {PropertiesObserverMixinFunction} from "./types";
 import {dedupingMixin} from "./deduping-mixin";
-
-export const propertiesObserver: PropertiesObserverMixinFunction = dedupingMixin((superClass: Constructor<LitElement>) => {
+import {HasChanged} from "lit-element/src/lib/updating-element";
+const notEqual: HasChanged = (value: unknown, old: unknown): boolean => {
+    // This ensures (old==NaN, value==NaN) always returns false
+    return old !== value && (old === old || value === value);
+};
+export const propertiesObserver: PropertiesObserverMixinFunction = dedupingMixin((superClass: Constructor<any>) => {
     class PropertiesObserverMixin extends superClass{
         _requestPropertyUpdate(name: PropertyKey, oldValue : any, options: PropertyDeclaration = {}){
             if(this[`${String(name)}Changed`]){
-                let current = this[name];
+                let current = (<any>this)[name];
                 let comparer = options.hasChanged || notEqual;
                 if(comparer(current, oldValue))
                     this[`${String(name)}Changed`](current, oldValue);
