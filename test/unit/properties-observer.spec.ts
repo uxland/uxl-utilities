@@ -1,32 +1,35 @@
 import { propertiesObserver } from "../../src/properties-observer";
-class A extends propertiesObserver(<any>Object) {
-    constructor(private _p1?: string, private _p2?: string){
-        super();
-    }
-    p1Changed(newValue, oldValue) {
-    }
-    p2Changed(newValue, oldValue) {
-    }
 
-    get p1(): string{
-        return this._p1;
-    }
-    set p1(value: string){
-        let old = this._p1;
-        this._p1 = value;
-        this['requestUpdate']('p1', old);
-    }
-    get p2(): string{
-        return this._p2;
-    }
-    set p2(value: string){
-        let old = this._p2;
-        this._p2 = value;
-        this['requestUpdate']('p2', old);
-    }
-}
 
 describe('Given an instance of PropertiesObserver mixin', () => {
+    class A extends propertiesObserver(<any>Object) {
+        constructor(private _p1?: string, private _p2?: string){
+            super();
+        }
+        p1Changed(newValue, oldValue) {
+            this._p1 = newValue;
+        }
+        p2Changed(newValue, oldValue) {
+           this._p2 = newValue;
+        }
+
+        get p1(): string{
+            return this._p1;
+        }
+        set p1(value: string){
+            let old = this._p1;
+            this._p1 = value;
+            this['requestUpdate']('p1', old);
+        }
+        get p2(): string{
+            return this._p2;
+        }
+        set p2(value: string){
+            let old = this._p2;
+            this._p2 = value;
+            this['requestUpdate']('p2', old);
+        }
+    }
     it('it should invoke all xxxChanged when changes', () => {
         let a = new A();
         let p1Spy = jest.spyOn(a, 'p1Changed');

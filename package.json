@@ -12,7 +12,7 @@
     },
     "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
     "main": "lib/index.js",
-    "module": "index.js",
+    "module": "es/index.js",
     "types": "lib/index.d.ts",
     "keywords": [
         "polymer",
