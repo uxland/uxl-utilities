@@ -1,5 +1,5 @@
 import {AsyncInterface} from "./async-interface";
-import {timeOut} from "@polymer/polymer/lib/utils/async";
+import * as timeOut from './time-out';
 type RequestIdleCallbackHandle = any;
 type RequestIdleCallbackOptions = {
     timeout: number;

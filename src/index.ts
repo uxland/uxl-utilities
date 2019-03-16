@@ -1,4 +1,4 @@
-import * as ramda from './ramda/index';
+/*import * as ramda from './ramda/index';
 import * as async from './async';
 import collect from "./collect";
 import constantBuilder from "./constant-builder";
@@ -24,8 +24,7 @@ export {
     MixinFunction,
     ramda,
     async
-}
-/*
+}*/
 export * from './async/animation-frame';
 export * from './async/async-interface';
 export * from './async/debounce';
@@ -51,4 +50,4 @@ export * from './listen';
 export * from './nop';
 export * from './properties-observer';
 export * from  './spec';
-export * from './types';*/
+export * from './types';
