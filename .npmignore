@@ -1,6 +1,10 @@
 test/
-mochawesome-report/
-polymer.json
+src/
+.gitignore
+.npmignore
+.travis.yml
+babel.config.js
+jest.config.js
+rollup.config-js
 tsconfig.json
-tsconfig-cjs.json
-tsconfig-es.json
+tsconfig-types.json
