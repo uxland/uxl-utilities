@@ -1,4 +1,3 @@
-import reduce from 'ramda/es/reduce';
 import toDictionaryBy from "./to-dictionary-by";
 
 export interface Entity {

@@ -1,3 +1,3 @@
-import propEq from 'ramda/es/propEq';
+import {propEq} from 'ramda';
 
 export const idEq = propEq('id');

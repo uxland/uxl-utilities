@@ -1,3 +1,2 @@
-import reject from 'ramda/es/reject';
-import isNil from 'ramda/es/isNil';
+import {reject, isNil} from 'ramda';
 export const rejectNil = reject(isNil);
