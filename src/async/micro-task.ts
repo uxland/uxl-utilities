@@ -4,7 +4,7 @@ let microtaskCurrHandle = 0;
 let microtaskLastHandle = 0;
 let microtaskCallbacks = [];
 let microtaskNodeContent = 0;
-let microtaskNode = document.createTextNode('');
+let microtaskNode = document && document.createTextNode('');
 if(MutationObserver)
     new MutationObserver(microtaskFlush).observe(microtaskNode, {characterData: true});
 function microtaskFlush() {
