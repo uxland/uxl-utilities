@@ -6,6 +6,7 @@ export * from './async/micro-task';
 export * from './async/time-out';
 export * from './ramda/id';
 export * from './ramda/id-eq';
+export * from './ramda/is-function';
 export * from './ramda/is-not-empty';
 export * from './ramda/is-not-nil';
 export * from './ramda/is-not-nil-neither-empty';
