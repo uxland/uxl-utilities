@@ -1,5 +1,5 @@
 import {AsyncInterface} from "./async-interface";
-import * as timeOut from './time-out';
+import {timeOut} from './time-out';
 type RequestIdleCallbackHandle = any;
 type RequestIdleCallbackOptions = {
     timeout: number;

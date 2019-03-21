@@ -1,10 +1,9 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "module": "commonjs",
-    "rootDir": ".",
-    "allowJs": true,
-    "noEmit": true,
+    "module": "esnext",
+    "rootDir": "src",
+    "allowJs": false,
     "noImplicitAny": false,
     "removeComments": true,
     "esModuleInterop": true,
@@ -25,11 +24,11 @@
     }
   },
   "include": [
-    "src/**/*",
-    "test/**/*"
+    "src/**/*"
   ],
   "exclude": [
     "node_modules",
-    "es"
+    "es",
+    "test"
   ]
 }
