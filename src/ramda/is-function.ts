@@ -1,0 +1,1 @@
+export const isFunction = (test: unknown) => typeof test === 'function';
