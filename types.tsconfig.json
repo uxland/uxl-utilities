@@ -3,7 +3,7 @@
     "target": "esnext",
     "module": "commonjs",
     "rootDir": "src",
-    "outDir": "types",
+    "outFile": "types/index.d.ts",
     "declaration": true,
     "emitDeclarationOnly": true,
     "noImplicitAny": false,
