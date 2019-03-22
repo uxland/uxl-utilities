@@ -1,7 +1,7 @@
 import {Constructor} from "lit-element";
 import {PropertiesObserverMixinFunction} from "./types";
 import {dedupingMixin} from "./deduping-mixin";
-import {notEqual} from "lit-element/src/lib/updating-element";
+import {notEqual} from "lit-element";
 import defaultTo from 'ramda/es/defaultTo';
 import pipe from 'ramda/es/pipe';
 const getPropertyComponentComparer = (name: PropertyKey, component: any) => component.constructor._classProperties ? component.constructor._classProperties.get(name) : undefined;
