@@ -7,8 +7,6 @@ sudo: required
 notifications:
   email: false
 node_js: 10
-addons:
-  chrome: stable
 script:
   # - xvfb-run npm run test:ui
   - npm run test:unit
