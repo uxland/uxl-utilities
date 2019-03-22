@@ -1,5 +1,6 @@
 import {AsyncInterface} from "./async-interface";
-
+import {timeOut} from "./time-out";
+import apply from 'ramda/es/apply';
 export class Debouncer {
     constructor(private asyncModule: AsyncInterface = null, private callback: Function = null, private handle: number = null) {
     }
@@ -94,3 +95,9 @@ export class Debouncer {
         return debouncer;
     }
 }
+// @ts-ignore
+export const debounce: (delay: number) => MethodDecorator<Function> = delay => (target, propertyKey, descriptor) =>{
+    let debouncer: Debouncer = null;
+    const originalMethod = descriptor.value;
+    return Debouncer.debounce(debouncer, timeOut.after(delay), (...args: any[]) => originalMethod.apply(this, ...args))
+};
