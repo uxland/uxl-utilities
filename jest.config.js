@@ -1,5 +1,18 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
-  testPathIgnorePatterns: ['/node_modules/',  '/src/', '/es/', '/lib/']
+  setupFilesAfterEnv: ['./test/setup.ts'],
+  transformIgnorePatterns:[],
+  transform:{
+    "^.+\\\\node_modules\\\\lit-element\\\\.*?\\\\*?\.js$": "ts-jest",
+    "^.+\\node_modules\\lit-element\\.*?\\*?\.js$": "ts-jest",
+    "^.+\/node_modules\/lit-element\/.*?\/*?\.js$": "ts-jest",
+    "^.+\\\\node_modules\\\\lit-html\\\\.*?\\\\*?\.js$": "ts-jest",
+    "^.+\\node_modules\\lit-html\\.*?\\*?\.js$": "ts-jest",
+    "^.+\/node_modules\/lit-html\/.*?\/*?\.js$" : "ts-jest",
+    "^.+\\\\node_modules\\\\.*?\\\\es\\\\.*?\\\\*?\.js$": "ts-jest",
+    "^.+\\node_modules\\.*?\\es\\.*?\\*?\.js$": "ts-jest",
+    "^.+\/node_modules\/.*?\/es\/.*?\/*?\.js$" : "ts-jest",
+    "^.+\\.ts$": "ts-jest",
+    "^.+\.ts$": "ts-jest"
+  }
 };
