@@ -1,27 +1,25 @@
-import {Constructor, PropertyDeclaration} from "lit-element";
+import {Constructor} from "lit-element";
 import {PropertiesObserverMixinFunction} from "./types";
 import {dedupingMixin} from "./deduping-mixin";
-import {HasChanged} from "lit-element/src/lib/updating-element";
-const notEqual: HasChanged = (value: unknown, old: unknown): boolean => {
-    // This ensures (old==NaN, value==NaN) always returns false
-    return old !== value && (old === old || value === value);
-};
+import {notEqual} from "lit-element/src/lib/updating-element";
+import defaultTo from 'ramda/es/defaultTo';
+import pipe from 'ramda/es/pipe';
+const getPropertyComponentComparer = (name: PropertyKey, component: any) => component.constructor._classProperties ? component.constructor._classProperties.get(name) : undefined;
+const comparer = pipe(getPropertyComponentComparer, defaultTo(notEqual));
 export const propertiesObserver: PropertiesObserverMixinFunction = dedupingMixin((superClass: Constructor<any>) => {
     class PropertiesObserverMixin extends superClass{
-        _requestPropertyUpdate(name: PropertyKey, oldValue : any, options: PropertyDeclaration = {}){
+        _requestUpdate(name?: PropertyKey, oldValue?: any){
+            super._requestUpdate ? super._requestUpdate(name, oldValue) : null;
             if(this[`${String(name)}Changed`]){
                 let current = (<any>this)[name];
-                let comparer = options.hasChanged || notEqual;
-                if(comparer(current, oldValue))
+                if(comparer(name, this)(current, oldValue))
                     this[`${String(name)}Changed`](current, oldValue);
             }
-            // @ts-ignore
-            super.__requestPropertyUpdate && super._requestPropertyUpdate(name, oldValue, options);
-
         }
         requestUpdate(name?: PropertyKey, oldValue?: any): Promise<unknown> {
             let result = super.requestUpdate ? super.requestUpdate(name, oldValue) : Promise.resolve(null);
-            this._requestPropertyUpdate(name, oldValue);
+            if(!super._requestUpdate)
+                this._requestUpdate(name, oldValue);
             return result;
         }
     }
