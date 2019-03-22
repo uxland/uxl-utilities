@@ -1,4 +1,4 @@
-import isNotNil from "../../../src/ramda/is-not-nil";
+import {isNotNil} from "../../../src";
 describe('is not nil fixture', () =>{
     test('null should return false', () =>{
         expect(isNotNil(null)).toBe(false);

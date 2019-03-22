@@ -1,4 +1,4 @@
-import isNotEmpty from "../../../src/ramda/is-not-empty";
+import {isNotEmpty} from "../../../src";
 describe('is not empty fixture', () =>{
     it('null should return true', () =>{
         expect(isNotEmpty(null)).toBe(true);

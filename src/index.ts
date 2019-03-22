@@ -24,5 +24,4 @@ export * from './invariant';
 export * from './listen';
 export * from './nop';
 export * from './properties-observer';
-export * from  './spec';
 export * from './types';
