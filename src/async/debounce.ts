@@ -94,9 +94,11 @@ export class Debouncer {
         return debouncer;
     }
 }
-// @ts-ignore
-export const debounce: (delay: number) => MethodDecorator<Function> = delay => (target, propertyKey, descriptor) =>{
-    let debouncer: Debouncer = null;
-    const originalMethod = descriptor.value;
-    return Debouncer.debounce(debouncer, timeOut.after(delay), (...args: any[]) => originalMethod.apply(this, ...args))
+export const debounce: (delay: number) => MethodDecorator = delay => (target, propertyKey, descriptor) => {
+    let descr = descriptor as any;
+    let originalCall: Function = descr.value;
+    descr.value = (...args: any[]) => {
+        this.debouncer = Debouncer.debounce(this.debouncer, timeOut.after(delay), originalCall.apply(args));
+    }
+
 };
