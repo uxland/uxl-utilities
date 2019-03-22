@@ -2,7 +2,7 @@ const { JSDOM } = require('jsdom');
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>');
 //@ts-ignore
-const { window } = jsdom;
+//const { window } = jsdom;
 
 function copyProps(src, target) {
     Object.defineProperties(target, {

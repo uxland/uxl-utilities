@@ -16,6 +16,7 @@ export * from './ramda/reject-nil';
 export * from './ramda/reject-nil-or-empty';
 export * from './ramda/to-dictionary';
 export * from './ramda/to-dictionary-by';
+export * from './ramda/to-path';
 export * from './collect';
 export * from './constant-builder';
 export * from './deduping-mixin';
