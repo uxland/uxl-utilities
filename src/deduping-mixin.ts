@@ -64,4 +64,3 @@ export const dedupingMixin = function(mixin) {
     return dedupingMixin;
 };
 /* eslint-enable valid-jsdoc */
-export default dedupingMixin;

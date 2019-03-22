@@ -5,4 +5,3 @@ export interface Entity {
 }
 
 export const toDictionary: <T extends Entity = any>(items: T[]) => {[id: string]: T} = toDictionaryBy('id');
-export default toDictionary;
