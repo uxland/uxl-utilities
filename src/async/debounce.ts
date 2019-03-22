@@ -1,6 +1,5 @@
 import {AsyncInterface} from "./async-interface";
 import {timeOut} from "./time-out";
-import apply from 'ramda/es/apply';
 export class Debouncer {
     constructor(private asyncModule: AsyncInterface = null, private callback: Function = null, private handle: number = null) {
     }
