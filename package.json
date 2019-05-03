@@ -13,7 +13,7 @@
     "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
     "main": "lib/index.js",
     "module": "es/index.js",
-    "types": "es/index.d.ts",
+    "types": "lib/index.d.ts",
     "keywords": [
         "polymer",
         "web components"
@@ -36,9 +36,8 @@
     "scripts": {
         "type-check": "tsc --noEmit",
         "type-check:watch": "npm run type-check -- --watch",
-        "build:es": "tsc -p build.tsconfig.json --outDir es  --declaration",
-        "build:cjs": "tsc -p build.tsconfig.json --outDir lib --module commonjs",
-        "build:types": "tsc -p types.tsconfig.json",
+        "build:es": "tsc -p build.tsconfig.json --outDir es",
+        "build:cjs": "tsc -p build.tsconfig.json --outDir lib --module commonjs --declaration",
         "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/uxl-redux.js",
         "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/uxl-redux.min.js",
         "build": "npm run build:es && npm run build:cjs",
