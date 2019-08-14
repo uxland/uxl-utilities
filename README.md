@@ -2,7 +2,7 @@
 
 | Build Status                                                                                                          | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
-| [![Build Status](https://api.travis-ci.org/uxland/uxl-utilities.svg)](https://api.travis-ci.org/uxland/uxl-utilities) | ![Statements](#statements# 'Make me better!') | ![Branches](#branches# 'Make me better!') | ![Functions](#functions# 'Make me better!') | ![Lines](#lines# 'Make me better!') |
+| [![Build Status](https://api.travis-ci.org/uxland/uxl-utilities.svg)](https://api.travis-ci.org/uxland/uxl-utilities) | ![Statements](https://img.shields.io/badge/Coverage-55.8%25-red.svg 'Make me better!') | ![Branches](https://img.shields.io/badge/Coverage-40%25-red.svg 'Make me better!') | ![Functions](https://img.shields.io/badge/Coverage-21.57%25-red.svg 'Make me better!') | ![Lines](https://img.shields.io/badge/Coverage-58.62%25-red.svg 'Make me better!') |
 
 ## Installation
 
