@@ -1,60 +1,59 @@
 {
-    "name": "@uxland/uxl-utilities",
-    "version": "0.0.0-development",
-    "description": "UXLand - Utilities",
-    "homepage": "https://github.com/uxland/uxl-utilities#readme",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/uxland/uxl-utilities.git"
-    },
-    "bugs": {
-        "url": "https://github.com/uxland/uxl-utilities/issues"
-    },
-    "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
-    "main": "lib/index.js",
-    "module": "es/index.js",
-    "types": "lib/index.d.ts",
-    "keywords": [
-        "polymer",
-        "web components"
-    ],
-    "devDependencies": {
-        "@types/jest": "^24.0.11",
-        "@types/ramda": "^0.26.3",
-        "jest": "^24.5.0",
-        "lodash": "^4.17.15",
-        "mutation-observer": "^1.0.3",
-        "semantic-release": "^15.13.3",
-        "travis-deploy-once": "^5.0.11",
-        "ts-jest": "^24.0.0",
-        "tslib": "^1.9.3",
-        "typescript": "^3.3.3333"
-    },
-    "dependencies": {
-        "lit-element": "^2.0.1",
-        "ramda": "^0.26.1"
-    },
-    "scripts": {
-        "type-check": "tsc --noEmit",
-        "type-check:watch": "npm run type-check -- --watch",
-        "build:es": "tsc -p build.tsconfig.json --outDir es",
-        "build:cjs": "tsc -p build.tsconfig.json --outDir lib --module commonjs --declaration",
-        "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/uxl-redux.js",
-        "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/uxl-redux.min.js",
-        "build": "npm run build:es && npm run build:cjs",
-        "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
-        "test:ui": "polymer test --config-file wct.config.json",
-        "test:unit": "jest",
-        "dist": "npm run build",
-        "tdd": "jest --watch",
-        "travis-deploy-once": "travis-deploy-once",
-        "semantic-release": "semantic-release"
-    },
-    "license": "Apache-2.0",
-    "directories": {
-        "test": "test"
-    },
-    "publishConfig": {
-        "access": "public"
-    }
+  "name": "@uxland/uxl-utilities",
+  "version": "0.0.0-development",
+  "description": "UXLand - Utilities",
+  "homepage": "https://github.com/uxland/uxl-utilities#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/uxland/uxl-utilities.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uxland/uxl-utilities/issues"
+  },
+  "author": "UXLand <dev@uxland.es> (http://www.uxland.es)",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
+  "keywords": [
+    "polymer",
+    "web components"
+  ],
+  "devDependencies": {
+    "@types/jest": "^24.0.11",
+    "@types/ramda": "^0.26.3",
+    "jest": "^24.5.0",
+    "mutation-observer": "^1.0.3",
+    "semantic-release": "^15.13.3",
+    "travis-deploy-once": "^5.0.11",
+    "ts-jest": "^24.0.0",
+    "tslib": "^1.9.3",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "lit-element": "^2.0.1",
+    "ramda": "^0.26.1"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build:es": "tsc -p build.tsconfig.json --outDir es",
+    "build:cjs": "tsc -p build.tsconfig.json --outDir lib --module commonjs --declaration",
+    "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/uxl-redux.js",
+    "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/uxl-redux.min.js",
+    "build": "npm run build:es && npm run build:cjs",
+    "test:ui:watch": "nodemon --watch test --watch src -x \"polymer test --config-file wct.config.json\"",
+    "test:ui": "polymer test --config-file wct.config.json",
+    "test:unit": "jest",
+    "dist": "npm run build",
+    "tdd": "jest --watch",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
+  },
+  "license": "Apache-2.0",
+  "directories": {
+    "test": "test"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
 }
