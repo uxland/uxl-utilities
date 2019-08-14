@@ -1,4 +1,4 @@
-# UXL Object Mapper [![npm version](https://badge.fury.io/js/%40uxland%2Fuxl-utilities.svg)](https://badge.fury.io/js/%40uxland%2Fuxl-utilities)
+# UXL Utilities [![npm version](https://badge.fury.io/js/%40uxland%2Fuxl-utilities.svg)](https://badge.fury.io/js/%40uxland%2Fuxl-utilities)
 
 | Build Status                                                                                                          | Statements                                    | Branches                                  | Functions                                   | Lines                               |
 | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ----------------------------------------- | ------------------------------------------- | ----------------------------------- |
