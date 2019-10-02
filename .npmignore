@@ -8,3 +8,7 @@ jest.config.js
 rollup.config-js
 tsconfig.json
 tsconfig-types.json
+build.tsconfig.json
+.buildstatus
+coverage
+README-template.md
