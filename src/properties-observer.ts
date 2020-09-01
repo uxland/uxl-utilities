@@ -5,22 +5,23 @@ import { dedupingMixin } from './deduping-mixin';
 import { PropertiesObserverMixinFunction } from './types';
 const getPropertyComponentComparer = (name: PropertyKey, component: any) =>
   component.constructor._classProperties ? component.constructor._classProperties.get(name).hasChanged : undefined;
-const comparer = pipe(
-  getPropertyComponentComparer,
-  defaultTo(notEqual)
-);
+const comparer = pipe(getPropertyComponentComparer, defaultTo(notEqual));
 export const propertiesObserver: PropertiesObserverMixinFunction = dedupingMixin((superClass: Constructor<any>) => {
   class PropertiesObserverMixin extends superClass {
-    _requestUpdate(name?: PropertyKey, oldValue?: any) {
-      super._requestUpdate ? super._requestUpdate(name, oldValue) : null;
-      if (this[`${String(name)}Changed`]) {
-        let current = (<any>this)[name];
-        if (comparer(name, this)(current, oldValue)) this[`${String(name)}Changed`](current, oldValue);
-      }
+    updated(changedProperties) {
+      super.updated(changedProperties);
+      changedProperties.forEach((oldValue, propName) => {
+        if (comparer(propName, this)(this[propName], oldValue)) {
+          if (this[`${String(propName)}Changed`]) this[`${String(propName)}Changed`](this[propName], oldValue);
+        }
+      });
     }
-    requestUpdate(name?: PropertyKey, oldValue?: any): Promise<unknown> {
+    requestUpdate(name, oldValue) {
       let result = super.requestUpdate ? super.requestUpdate(name, oldValue) : Promise.resolve(null);
-      if (!super._requestUpdate) this._requestUpdate(name, oldValue);
+      if (comparer(name, this)(this[name], oldValue)) {
+        if (this[`${String(name)}Changed`]) this[`${String(name)}Changed`](this[name], oldValue);
+      }
+
       return result;
     }
   }
