@@ -38,7 +38,7 @@
   "scripts": {
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build:es": "tsc -p build.tsconfig.json --outDir es",
+    "build:es": "tsc -p build.tsconfig.json --skipLibCheck --outDir es",
     "build:cjs": "tsc -p build.tsconfig.json --outDir lib --module commonjs --declaration",
     "build:umd": "cross-env NODE_ENV=development rollup -c -o dist/uxl-redux.js",
     "build:umd:min": "cross-env NODE_ENV=production rollup -c -o dist/uxl-redux.min.js",
