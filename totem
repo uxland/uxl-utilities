@@ -1,0 +1,97 @@
+#!/usr/bin/env sh
+set -eu
+
+# Based on code from Laravel Sail, see: https://github.com/laravel/sail/blob/1.x/bin/sail
+# -----BEGIN ORIGINAL LARAVEL SAIL LICENSE-----
+# The MIT License (MIT)
+#
+# Copyright (c) Taylor Otwell
+# Copyright (c) Chris Fidao
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+# -----END ORIGINAL LARAVEL SAIL LICENSE-----
+
+DOCKER_COMPOSE="docker-compose"
+if ! [ -x "$(command -v docker-compose)" ]; then
+    DOCKER_COMPOSE="docker compose"
+fi
+
+# Source the ".env" file so environment variables are available...
+if [ -f ./.env ]; then
+    . ./.env
+fi
+
+# Define environment variables...
+export APP_SERVICE="${APP_SERVICE:-"front"}"
+
+warning() {
+    printf "\033[1;37m%s\033[0m\n" "$1" >&2
+}
+
+# If something fails, warn the use if Docker is not running...
+check_docker() {
+    # shellcheck disable=SC2181
+    [ $? -eq 0 ] && exit
+
+    # Ensure that Docker is running...
+    if ! docker info > /dev/null 2>&1; then
+        warning "HINT: Docker is not running."
+    fi
+}
+trap "check_docker" EXIT
+
+if [ $# -eq 0 ]; then
+    "$DOCKER_COMPOSE" ps
+    exit 0
+fi
+
+case "$1" in
+    # Route known commands to a specific container...
+    node)              TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- node "$@";;
+    lerna)             TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- yarn lerna "$@";;
+    npm)               TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- npm "$@";;
+    npx)               TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- npx "$@";;
+    yarn)              TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- yarn "$@";;
+    sh)                TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- sh "$@";;
+    shell | bash)      TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- bash "$@";;
+    fish)              TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- sh -c "! command -v fish >/dev/null && (apt-get update && apt-get install -y --no-install-recommends fish nano); exec fish";;
+    git)               TARGET_SERVICE="$APP_SERVICE"; shift 1; set -- git "$@";;
+
+    # Pass unknown commands to the Docker Compose binary...
+    *) "$DOCKER_COMPOSE" "$@"; exit 1;;
+esac
+
+# Run the command
+set -- "$DOCKER_COMPOSE" exec "$TARGET_SERVICE" "$@"
+if ! "$@"; then
+    # If the command failed, check if it was because the service was down,
+    # auto-start it, and retry the command
+    TARGET_SERVICE_RUNNING=0
+    if "$DOCKER_COMPOSE" ps --services --filter "status=running" | grep -Fxq "$TARGET_SERVICE"; then
+        TARGET_SERVICE_RUNNING=1
+    fi
+
+    if [ "$TARGET_SERVICE_RUNNING" -eq 1 ]; then
+        exit 1
+    fi
+
+    warning "Service $TARGET_SERVICE is not running, starting it..."
+    "$DOCKER_COMPOSE" up -d "$TARGET_SERVICE"
+    "$@"
+fi

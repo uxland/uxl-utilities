@@ -1,0 +1,33 @@
+name: Publish to NPM
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-n-publish:
+    name: Build and Publish
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Setup GIT credentials
+        run: |
+          git config user.name $GITHUB_ACTOR
+          git config user.email avizcaino@uxland.es
+      - name: Setup NPM
+        run: |
+          npm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+          npm whoami
+      - name: Install and test
+        run: yarn install
+      - name: Build
+        run: yarn dist
+      - name: Publish Release
+        if: github.ref == 'refs/heads/master'
+        run: npx semantic-release --branch master
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
